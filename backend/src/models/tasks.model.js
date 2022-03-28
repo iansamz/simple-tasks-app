@@ -5,6 +5,14 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
             autoIncrement: true
         },
+        title: {
+            allowNull: true,
+            type: Sequelize.STRING
+        },
+        description: {
+            allowNull: true,
+            type: Sequelize.STRING
+        },
         location: {
             allowNull: true,
             type: Sequelize.STRING
@@ -54,7 +62,13 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DATE
         }
     });
+
+    Task.associate = function(models) {
+        Task.belongsTo(models.Personnel, {through: 'tasks_assigned', as: 'tasks_assigned'});
+        Task.belongsTo(models.Personnel, {through: 'tasks_assigned_to', as: 'tasks_assigned_to'});
+        Task.belongsTo(models.Client, {foreignKey: 'assigned_by', as: 'client'});
+    };
   
-    return Personnel;
+    return Task;
 };
   
