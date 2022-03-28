@@ -1,21 +1,21 @@
 version: '3.8'
 
 services: 
-  # tasks_node_backend:
-  #   container_name: tasks_node_backend
-  #   image: tasks_node_backend:0.0.1
-  #   build: 
-  #     context: .
-  #   ports:
-  #     - "5555:5555"
-  #   environment: 
-  #     - EXTERNAL_PORT=5555
-  #     - PGDATABASE=tasks_db
-  #     - PGUSER=tasks_db_user
-  #     - PGPASSWORD=12345
-  #     - PGHOST=tasks_node_db
-  #   depends_on: 
-  #     - tasks_node_db
+  tasks_node_backend:
+    container_name: tasks_node_backend
+    image: tasks_node_backend:0.0.1
+    build: 
+      context: .
+    ports:
+      - "5555:5555"
+    environment: 
+      - EXTERNAL_PORT=5555
+      - PGDATABASE=tasks_db
+      - PGUSER=tasks_db_user
+      - PGPASSWORD=12345
+      - PGHOST=tasks_node_db
+    depends_on: 
+      - tasks_node_db
   tasks_node_db: 
     container_name: tasks_node_db
     image: "postgres:12"
