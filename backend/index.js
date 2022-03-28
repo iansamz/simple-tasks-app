@@ -22,6 +22,14 @@ app.use(express.static(path.join(__dirname, './public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+
+const db = require('./src/models');
+db.sequelize.sync();
+// // drop the table if it already exists
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

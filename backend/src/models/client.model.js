@@ -13,11 +13,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       gender: {
-        type: DataTypes.ENUM,
+        type: Sequelize.ENUM,
         values: ['MALE', 'FEMALE', 'OTHER']
       },
       registration: {
-        type: DataTypes.ENUM,
+        type: Sequelize.ENUM,
         values: ['self', 'organisation']
       }
     });
